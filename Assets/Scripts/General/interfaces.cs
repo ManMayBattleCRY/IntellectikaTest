@@ -1,11 +1,9 @@
-using UnityEngine;
-
 namespace Intellectika.Interfaces
 {
 
     public interface ILocatable
 		{
-        public GameObject Return();
+        public UnityEngine.GameObject Return();
         }
 
 }
