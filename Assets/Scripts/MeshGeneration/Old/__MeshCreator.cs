@@ -5,7 +5,7 @@ using UnityEngine;
 namespace Intellectika
 {
     [RequireComponent(typeof(MeshFilter), typeof(MeshRenderer))]
-    abstract public class MeshCreator : MonoBehaviour
+    abstract public class __MeshCreator : MonoBehaviour
     {
        public Vector3[] Vertices;
        public int[] Triangles;

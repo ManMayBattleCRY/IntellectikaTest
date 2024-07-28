@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Intellectika
 {
-    public class parallelepiped : MeshCreator
+    public class parallelepiped : __MeshCreator
     {
 
 
