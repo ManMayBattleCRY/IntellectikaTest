@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Intellectika
 {
-    public class FoundationCreator : MeshData
+    public class FoundationCreator : MonoBehaviour
     {
 
         public int CreateBoth(ref int[] triangles, int tIndex, ref int vIndex, int[] HighVertices, Vector3[] Vertices)
