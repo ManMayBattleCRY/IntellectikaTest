@@ -396,9 +396,9 @@ MonoBehaviour:
   iteration: 0
   CurrentAngleX: 0
   CurrentAngleY: 0
-  StepX: 10
-  StepY: 10
-  PlaneCount: 10
+  StepX: 5
+  StepY: 5
+  PlaneCount: 7
   Radius: 5
   Height: 5
 --- !u!4 &1135975254
