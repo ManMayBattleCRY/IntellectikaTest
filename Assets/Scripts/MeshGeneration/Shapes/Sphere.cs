@@ -4,11 +4,8 @@ using UnityEngine;
 
 namespace Intellectika
 {
-    internal class parallelepiped : MeshObjects
+    internal class Sphere : MeshObjects
     {
-        [SerializeField] private protected float Length = 4;
-        [SerializeField] private protected float Width = 4;
-        [SerializeField] private protected float Height = 4;
 
         private void Awake()
         {
@@ -17,14 +14,14 @@ namespace Intellectika
 
         private protected override void Init()
         {
-            base.Init(); 
+            base.Init();
 
 
 
             CreateWrapper();
             CreateTop();
             CreateBottom();
-            RecalculateSize(mFilters, Length, Height, Width);
+            Normalize(mFilters, Radius);
             RecalculatePosition(mFilters);
             ChangeColor(mRenderers, color);
             RecalculateNormals(mFilters);
@@ -33,14 +30,14 @@ namespace Intellectika
 
         void CreateWrapper()
         {
-            
+           
             CurrentAngleX = 0;
             for (int i = 0; i < PlaneCount; i++)
             {
                 GameObject mesh = new GameObject("mesh");
                 mesh.transform.parent = transform;
 
-                CalculatePoints();
+                CalculatePointsSphere();
 
                 mRenderers[MeshIndex] = mesh.AddComponent<MeshRenderer>();
                 mFilters[MeshIndex] = mesh.AddComponent<MeshFilter>();
@@ -59,7 +56,7 @@ namespace Intellectika
                 GameObject mesh = new GameObject("mesh");
                 mesh.transform.parent = transform;
 
-                CalculatePoints();
+                CalculatePointsSphere();
 
                 mRenderers[MeshIndex] = mesh.AddComponent<MeshRenderer>();
                 mFilters[MeshIndex] = mesh.AddComponent<MeshFilter>();
@@ -82,7 +79,7 @@ namespace Intellectika
                 GameObject mesh = new GameObject("mesh");
                 mesh.transform.parent = transform;
 
-                CalculatePoints();
+                CalculatePointsSphere();
 
                 mRenderers[MeshIndex] = mesh.AddComponent<MeshRenderer>();
                 mFilters[MeshIndex] = mesh.AddComponent<MeshFilter>();

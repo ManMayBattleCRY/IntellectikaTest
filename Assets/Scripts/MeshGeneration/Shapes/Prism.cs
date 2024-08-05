@@ -1,13 +1,13 @@
+using Palmmedia.ReportGenerator.Core.Parser.Filtering;
 using System.Collections;
 using System.Collections.Generic;
+using System.Drawing;
 using UnityEngine;
 
 namespace Intellectika
 {
-    internal class parallelepiped : MeshObjects
+    internal class Prism : MeshObjects
     {
-        [SerializeField] private protected float Length = 4;
-        [SerializeField] private protected float Width = 4;
         [SerializeField] private protected float Height = 4;
 
         private void Awake()
@@ -17,14 +17,15 @@ namespace Intellectika
 
         private protected override void Init()
         {
-            base.Init(); 
+            base.Init();
 
 
 
             CreateWrapper();
             CreateTop();
             CreateBottom();
-            RecalculateSize(mFilters, Length, Height, Width);
+            RecalculateSize(mFilters, 1, Height, 1);
+            ChangePrismSize(mFilters, Radius);
             RecalculatePosition(mFilters);
             ChangeColor(mRenderers, color);
             RecalculateNormals(mFilters);
@@ -33,7 +34,7 @@ namespace Intellectika
 
         void CreateWrapper()
         {
-            
+
             CurrentAngleX = 0;
             for (int i = 0; i < PlaneCount; i++)
             {
@@ -108,5 +109,6 @@ namespace Intellectika
         //        }
         //    }
         //}
+
     }
 }

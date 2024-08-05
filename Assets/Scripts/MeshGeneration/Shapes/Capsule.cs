@@ -1,15 +1,14 @@
+using Palmmedia.ReportGenerator.Core.Parser.Filtering;
 using System.Collections;
 using System.Collections.Generic;
+using System.Drawing;
 using UnityEngine;
 
 namespace Intellectika
 {
-    internal class parallelepiped : MeshObjects
+    internal class Capsule : MeshObjects
     {
-        [SerializeField] private protected float Length = 4;
-        [SerializeField] private protected float Width = 4;
         [SerializeField] private protected float Height = 4;
-
         private void Awake()
         {
             Init();
@@ -17,14 +16,20 @@ namespace Intellectika
 
         private protected override void Init()
         {
-            base.Init(); 
+            base.Init();
+            //mFilters = new MeshFilter[PlaneCount * 4];
+            //mRenderers = new MeshRenderer[PlaneCount * 4];
 
 
 
-            CreateWrapper();
+
             CreateTop();
+            CreateWrapper();
             CreateBottom();
-            RecalculateSize(mFilters, Length, Height, Width);
+            Normalize(mFilters, Radius);
+
+            Divide();
+
             RecalculatePosition(mFilters);
             ChangeColor(mRenderers, color);
             RecalculateNormals(mFilters);
@@ -33,14 +38,14 @@ namespace Intellectika
 
         void CreateWrapper()
         {
-            
+
             CurrentAngleX = 0;
             for (int i = 0; i < PlaneCount; i++)
             {
                 GameObject mesh = new GameObject("mesh");
                 mesh.transform.parent = transform;
 
-                CalculatePoints();
+                CalculatePointsSphere();
 
                 mRenderers[MeshIndex] = mesh.AddComponent<MeshRenderer>();
                 mFilters[MeshIndex] = mesh.AddComponent<MeshFilter>();
@@ -59,7 +64,7 @@ namespace Intellectika
                 GameObject mesh = new GameObject("mesh");
                 mesh.transform.parent = transform;
 
-                CalculatePoints();
+                CalculatePointsSphere();
 
                 mRenderers[MeshIndex] = mesh.AddComponent<MeshRenderer>();
                 mFilters[MeshIndex] = mesh.AddComponent<MeshFilter>();
@@ -82,7 +87,7 @@ namespace Intellectika
                 GameObject mesh = new GameObject("mesh");
                 mesh.transform.parent = transform;
 
-                CalculatePoints();
+                CalculatePointsSphere();
 
                 mRenderers[MeshIndex] = mesh.AddComponent<MeshRenderer>();
                 mFilters[MeshIndex] = mesh.AddComponent<MeshFilter>();
@@ -94,6 +99,49 @@ namespace Intellectika
 
                 MeshIndex++;
             }
+        }
+
+        void Divide()
+        {
+
+            float SphereHeight = (Height - (Radius*2)) / 2;
+            for (int x = 0; x < PlaneCount; x++)
+            {
+                Vector3[] NewVertices = mFilters[x].mesh.vertices;
+                for (int i = 0; i < mFilters[x].mesh.vertices.Length; i++)
+                {
+                    NewVertices[i].y +=  SphereHeight;
+                }
+                mFilters[x].mesh.vertices = NewVertices;
+            }
+
+            for (int x = PlaneCount * 2; x < PlaneCount*3; x++)
+            {
+                Vector3[] NewVertices = mFilters[x].mesh.vertices;
+                for (int i = 0; i < mFilters[x].mesh.vertices.Length; i++)
+                {
+                    NewVertices[i].y -=  SphereHeight;
+                }
+                mFilters[x].mesh.vertices = NewVertices;
+            }
+
+            for (int x = PlaneCount; x < PlaneCount *2; x++)
+            {
+                Vector3[] NewVertices = mFilters[x].mesh.vertices;
+                for (int i = 0; i < mFilters[x].mesh.vertices.Length; i++)
+                {
+                    if (i < (Resolution + 1)*(Resolution + 1)/2)
+                    {
+                        NewVertices[i].y -=  SphereHeight;
+                    }
+                    else
+                    {
+                        NewVertices[i].y +=  SphereHeight;
+                    }
+                }
+                mFilters[x].mesh.vertices = NewVertices;
+            }
+
         }
 
         //private void OnDrawGizmos()

@@ -24,7 +24,7 @@ namespace Intellectika
             Mesh = mesh;
             Quality = quality;
 
-            StartPoint = new Vector3(_startPoint.x, _startPoint.y, _startPoint.z) ;
+            StartPoint = _startPoint;
             EndPoint = _endPoint;
 
             
