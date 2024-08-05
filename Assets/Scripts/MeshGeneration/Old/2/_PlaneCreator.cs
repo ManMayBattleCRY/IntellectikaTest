@@ -7,7 +7,7 @@ using UnityEngine;
 
 namespace Intellectika
 {
-    public class PlaneCreator : MonoBehaviour
+    public class _PlaneCreator : MonoBehaviour
 
     {
 

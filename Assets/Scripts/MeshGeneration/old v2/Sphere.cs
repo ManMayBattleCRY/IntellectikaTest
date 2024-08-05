@@ -6,7 +6,7 @@ using UnityEngine;
 
 namespace Intellectika
 {
-    public class Sphere : MeshCreator
+    public class Sphere : MeshCreatorv2
     {
 
         private void Start()
@@ -17,17 +17,17 @@ namespace Intellectika
         {
 
 
-            for (int i = 0; i < PlaneCount - 1; i++)
+            for (int i = 0; i < PlaneCount; i++)
             {
                 planevectors = RecalculatePlaneVectors();
 
                 CreatePlane();
             }
             planevectors = RecalculatePlaneVectors();
-            CreateLast();
+           // CreateLast();
 
             //  CreateBottom();
-             CreateTopForSphere();
+           //  CreateTopForSphere();
             //int counter = 0;
             //foreach (Vector3 i in Vertices)
             //{

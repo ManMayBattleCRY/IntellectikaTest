@@ -7,7 +7,7 @@ using static UnityEditor.Experimental.AssetDatabaseExperimental.AssetDatabaseCou
 namespace Intellectika
 {
     [RequireComponent(typeof(MeshFilter), typeof(MeshRenderer))]
-    public class MeshCreator : MonoBehaviour
+    public class MeshCreatorv2 : MonoBehaviour
     {
 
         [HideInInspector] public Mesh mesh;
@@ -149,13 +149,19 @@ namespace Intellectika
                 Vector3 v00 = new Vector3(Vector3.Lerp(planevectors.v00, planevectors.v10, (float)(CurrentX) / StepX).x,
             Vector3.Lerp(planevectors.v00, planevectors.v01, (float)(CurrentY) / StepY).y,
             Vector3.Lerp(planevectors.v00, planevectors.v10, (float)(CurrentX) / StepX).z);
+
             Vertices[CurrentX + VerticeIndex] = v00;
             Vector3 v01 = new Vector3(v00.x, Vector3.Lerp(planevectors.v00, planevectors.v01, (float)(CurrentY + 1) / StepY).y, v00.z);
+
             Vertices[CurrentX + VerticeIndex + StepX + 1] = v01;
             Vector3 v10 = new Vector3(Vector3.Lerp(planevectors.v00, planevectors.v10, (float)(CurrentX + 1) / StepX).x, Vector3.Lerp(planevectors.v00, planevectors.v01, (float)(CurrentY) / StepY).y,
                 Vector3.Lerp(planevectors.v00, planevectors.v10, (float)(CurrentX + 1) / StepX).z);
+
+
             Vertices[CurrentX + VerticeIndex + 1] = v10;
+
             Vector3 v11 = new Vector3(v10.x, v01.y, v10.z);
+
             Vertices[CurrentX + VerticeIndex + StepX + 2] = v11;
   
             
@@ -166,66 +172,64 @@ namespace Intellectika
 
 
 
-        public void CreateLast()
-        {
-            for (int y = 0; y < StepY; y++)
-            {
-                for (int x = 0; x < StepX - 1; x++)
-                {
-                    SetPlaneSingle(x, y);
+        //public void CreateLast()
+        //{
+        //    for (int y = 0; y < StepY; y++)
+        //    {
+        //        for (int x = 0; x < StepX - 1; x++)
+        //        {
+        //            SetPlaneSingle(x, y);
 
-                    CreatePlaneTriangels(x);
+        //            CreatePlaneTriangels(x);
 
-                }
+        //        }
 
-                SetFoundationVertices(y);
-
-
-                VerticeIndex += StepX + 1;
-            }
-            VerticeIndex += StepX + 1;
+        //        SetFoundationVertices(y);
 
 
-            for (int y = 0; y < StepY; y++)
-            {
-                //Vector3 v00 = new Vector3(Vector3.Lerp(planevectors.v00, planevectors.v10, (float)(StepX) / StepX).x,
-                //Vector3.Lerp(planevectors.v00, planevectors.v01, (float)(y) / StepY).y,
-                //Vector3.Lerp(planevectors.v00, planevectors.v10, (float)(StepX) / StepX).z);
-                //Vertices[StepX + VerticeIndex] = v00;
+        //        VerticeIndex += StepX + 1;
+        //    }
+        //    VerticeIndex += StepX + 1;
 
 
-                //Vector3 v01 = new Vector3(v00.x, Vector3.Lerp(planevectors.v00, planevectors.v01, (float)(y + 1) / StepY).y, v00.z);
-                //Vertices[StepX + VerticeIndex + StepX + 1] = v01;
+        //    for (int y = 0; y < StepY; y++)
+        //    {
+        //        //Vector3 v00 = new Vector3(Vector3.Lerp(planevectors.v00, planevectors.v10, (float)(StepX) / StepX).x,
+        //        //Vector3.Lerp(planevectors.v00, planevectors.v01, (float)(y) / StepY).y,
+        //        //Vector3.Lerp(planevectors.v00, planevectors.v10, (float)(StepX) / StepX).z);
+        //        //Vertices[StepX + VerticeIndex] = v00;
 
 
-                //Vector3 v10 = Vertices[(StepX + 1) * y];
-                //Vertices[StepX + VerticeIndex + 1] = v10;
+        //        //Vector3 v01 = new Vector3(v00.x, Vector3.Lerp(planevectors.v00, planevectors.v01, (float)(y + 1) / StepY).y, v00.z);
+        //        //Vertices[StepX + VerticeIndex + StepX + 1] = v01;
 
 
-                //Vector3 v11 = Vertices[(StepX + 1) * y + (StepX + 1)];
-                //Vertices[StepX + VerticeIndex + StepX + 2] = v11;
-
-              //  SetFoundationVertices(y);
-                //CreatePlaneTriangels(StepX + 1);  
+        //        //Vector3 v10 = Vertices[(StepX + 1) * y];
+        //        //Vertices[StepX + VerticeIndex + 1] = v10;
 
 
-                int v00 =  VerticeIndex - ((StepX) * (StepY)) + StepX *5 + 1;
-                int v01 =  (StepX + 1) * y;
-                int v10 = VerticeIndex - ((StepX) * (StepY)) + StepX + 1;
-                int v11 = (StepX + 1) * y + (StepX + 1);
-                Triangels[TriangleIndex] = v00;
-                Triangels[TriangleIndex + 1] = Triangels[TriangleIndex + 4] = v01;
-                Triangels[TriangleIndex + 2] = Triangels[TriangleIndex + 3] = v10;
-                Triangels[TriangleIndex + 5] = v11;
-                TriangleIndex += 6;
+        //        //Vector3 v11 = Vertices[(StepX + 1) * y + (StepX + 1)];
+        //        //Vertices[StepX + VerticeIndex + StepX + 2] = v11;
+
+        //      //  SetFoundationVertices(y);
+        //        //CreatePlaneTriangels(StepX + 1);  
 
 
-                VerticeIndex += StepX + 1 ;
-            }
-            VerticeIndex += StepX + 1;
+        //        int v00 =  VerticeIndex - ((StepX + 1) * (StepY + 1) + StepX - 1);
+        //        int v01 =  (StepX + 1) * y;
+        //        int v10 = VerticeIndex - ((StepX) * (StepY)) + StepX + 1 ;
+        //        int v11 = (StepX + 1) * y + (StepX + 1);
+        //        Triangels[TriangleIndex] = v00;
+        //        Triangels[TriangleIndex + 1] = Triangels[TriangleIndex + 4] = v01;
+        //        Triangels[TriangleIndex + 2] = Triangels[TriangleIndex + 3] = v10;
+        //        Triangels[TriangleIndex + 5] = v11;
+        //        TriangleIndex += 6;
+
+        //    }
 
 
-        }
+
+        //}
 
 
         //public PlaneVectors RecalculateSphereVectors()

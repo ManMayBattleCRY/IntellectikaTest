@@ -4,7 +4,8 @@ using UnityEngine;
 
 namespace Intellectika
 {
-    public class Cube : MeshCreator
+    public class Cube : MeshCreatorv2
+
     {
 
         private void Start()
