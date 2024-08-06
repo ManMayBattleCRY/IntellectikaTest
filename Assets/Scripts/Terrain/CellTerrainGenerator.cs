@@ -1,6 +1,7 @@
 using UnityEngine;
-using Locator = Intellectika.BootstrapSpace.Locator;
+using Locator = Intellectika.BootstrapSpace.LocatorReference;
 using cons = Intellectika.Consts.Constants;
+using Intellectika.BootstrapSpace;
 
 namespace Intellectika.Terrain
 {
@@ -19,7 +20,7 @@ namespace Intellectika.Terrain
         // Start is called before the first frame update
         void Start()
         {
-            cellStorage = Locator.LocatorInstance.Get("CellStorageInstance").GetComponent<TerrainCellStorage>();
+            cellStorage = LocatorReference.Locator.Get("CellStorageInstance").GetComponent<TerrainCellStorage>();
             cellStorage.InitStorage(Size.x, Size.y);
             GenerateTerrain();
         }

@@ -5,6 +5,7 @@ namespace Intellectika
 {
     internal class MeshObjects : MonoBehaviour
     {
+        private protected ObjectData data;
         [SerializeField] private protected Color color;
         [SerializeField] private protected float Radius = 4f;
         private protected float CurrentAngleX = 0;
@@ -26,6 +27,7 @@ namespace Intellectika
 
         private protected virtual void Init()
         {
+
             SingleAngle = 360 / (float)PlaneCount;
             mFilters = new MeshFilter[PlaneCount * 3];
             mRenderers = new MeshRenderer[PlaneCount * 3];

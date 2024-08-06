@@ -1,10 +1,11 @@
+using Intellectika.BootstrapSpace;
 using Intellectika.Interfaces;
 using Intellectika.Terrain;
 using System.Collections;
 using System.Collections.Generic;
 using System.Drawing;
 using UnityEngine;
-using Locator = Intellectika.BootstrapSpace.Locator;
+using Locator = Intellectika.BootstrapSpace.LocatorReference;
 
 namespace Intellectika.Terrain
 {
@@ -27,7 +28,7 @@ namespace Intellectika.Terrain
             if (CellStorageInstance == null)
             {
                 CellStorageInstance = this;
-                Locator.LocatorInstance.Add(Name, this);
+                LocatorReference.Locator.Add(Name, this);
                 
                 DontDestroyOnLoad(this);
             }
@@ -55,6 +56,11 @@ namespace Intellectika.Terrain
         public GameObject Return()
         {
             return gameObject;
+        }
+
+        public void OnDestroy()
+        {
+            LocatorReference.Locator.Remove(Name);
         }
     }
 }

@@ -14,6 +14,12 @@ namespace Intellectika
 
         private protected override void Init()
         {
+            data = Intellectika.BootstrapSpace.LocatorReference.Locator.Get("ObjectData").GetComponent<ObjectData>();
+            color = data.GetColor();
+            Radius = data.GetRadius();
+            PlaneCount = data.GetPlaneCount();
+            Resolution = data.GetResolution();
+
             base.Init();
 
 

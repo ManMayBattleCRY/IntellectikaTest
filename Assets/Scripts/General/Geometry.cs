@@ -30,6 +30,7 @@ namespace Intellectika
 
                 return new Vector3(x, y, z);
             }
+
         }
     }
 }

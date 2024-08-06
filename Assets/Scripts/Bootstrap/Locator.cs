@@ -6,35 +6,35 @@ using Intellectika.Interfaces;
 
 namespace Intellectika.BootstrapSpace
 {
-    public class Locator : MonoBehaviour
+    public class LocatorReference : MonoBehaviour
     {
 
-        public static Locator LocatorInstance { get; private set; }
+        public static LocatorReference Locator { get; private set; }
         Dictionary<string,ILocatable> ReferenceStorage = new Dictionary<string,Interfaces.ILocatable>();
 
-        public void Add(string name, ILocatable obj)
+        public void Add(string _name, ILocatable obj)
         {
-            ReferenceStorage.Add(name, obj);
+            ReferenceStorage.Add(_name, obj);
         }
 
-        public GameObject Get(string name) 
+        public GameObject Get(string _name) 
         {
-            if (ReferenceStorage[name] != null) return ReferenceStorage[name].Return();
+            if (ReferenceStorage[_name] != null) return ReferenceStorage[_name].Return();
             else return null;
         }
 
-        public void Remove(string name) 
+        public void Remove(string _name) 
         {  
-            ReferenceStorage.Remove(name); 
+            ReferenceStorage.Remove(_name); 
         }
 
 
 
         private void Awake()
         {
-            if (LocatorInstance == null)
+            if (Locator == null)
             {
-                LocatorInstance = this;
+                Locator = this;
                 DontDestroyOnLoad(this);
             }
             else Destroy(gameObject);
