@@ -6,17 +6,23 @@ namespace Intellectika
 {
     internal class parallelepiped : MeshObjects
     {
-        [SerializeField] private protected float Length = 4;
-        [SerializeField] private protected float Width = 4;
-        [SerializeField] private protected float Height = 4;
+
 
         private void Awake()
         {
+
             Init();
         }
 
         private protected override void Init()
         {
+            data = Intellectika.BootstrapSpace.LocatorReference.Locator.Get("ObjectData").GetComponent<ObjectData>();
+            color = data.GetColor();
+            PlaneCount = data.GetPlaneCount();
+            Resolution = data.GetResolution();
+            Height = data.GetHeght();
+            Width = data.GetWidth();
+            Length = data.GetLength();
             base.Init(); 
 
 

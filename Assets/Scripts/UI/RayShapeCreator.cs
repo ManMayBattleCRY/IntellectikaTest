@@ -86,14 +86,11 @@ namespace Intellectika
 
         public void Add()
         {
-            switch (mode)
-            {
-                case 0:
-                    {
-                        CurrentCell.Spawn();
-                        break;
-                    }
-            }
+            CurrentCell.mode = mode;
+             CurrentCell.Spawn();
+
+                    
+            
         }
 
         public void Change()

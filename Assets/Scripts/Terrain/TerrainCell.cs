@@ -13,7 +13,7 @@ namespace Intellectika
         public Material material;
         MeshObjects meshObjects;
         [SerializeField] MeshObjects[] obj;
-        byte mode = 0;
+        internal byte mode = 0;
         public bool occupied = false;
         private void Awake()
         {

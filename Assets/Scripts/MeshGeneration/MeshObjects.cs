@@ -5,6 +5,9 @@ namespace Intellectika
 {
     internal class MeshObjects : MonoBehaviour
     {
+        [SerializeField] private protected float Length = 4;
+        [SerializeField] private protected float Width = 4;
+        [SerializeField] private protected float Height = 4;
         private protected ObjectData data;
         [SerializeField] private protected Color color;
         [SerializeField] private protected float Radius = 4f;

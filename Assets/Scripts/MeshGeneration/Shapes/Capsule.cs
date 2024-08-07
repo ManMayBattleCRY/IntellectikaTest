@@ -8,14 +8,21 @@ namespace Intellectika
 {
     internal class Capsule : MeshObjects
     {
-        [SerializeField] private protected float Height = 4;
+        
         private void Awake()
         {
+
             Init();
         }
 
         private protected override void Init()
         {
+            data = Intellectika.BootstrapSpace.LocatorReference.Locator.Get("ObjectData").GetComponent<ObjectData>();
+            color = data.GetColor();
+            Radius = data.GetRadius();
+            PlaneCount = data.GetPlaneCount();
+            Resolution = data.GetResolution();
+            Height = data.GetHeght();
             base.Init();
             //mFilters = new MeshFilter[PlaneCount * 4];
             //mRenderers = new MeshRenderer[PlaneCount * 4];

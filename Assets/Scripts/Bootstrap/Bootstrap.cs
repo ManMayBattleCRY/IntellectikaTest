@@ -1,21 +1,17 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace Intellectika
 {
     public class Bootstrap : MonoBehaviour
     {
-        // Start is called before the first frame update
-        void Start()
-        {
-        
-        }
 
-        // Update is called once per frame
-        void Update()
+        private IEnumerator Start()
         {
-        
+            yield return new WaitForSecondsRealtime(.2f);
+            AsyncOperation load = SceneManager.LoadSceneAsync(1);
         }
     }
 }
