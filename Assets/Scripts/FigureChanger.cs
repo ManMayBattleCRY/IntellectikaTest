@@ -1,10 +1,8 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace Intellectika
 {
-    public class FigureChanger : MonoBehaviour
+    public class FigureChanger : MonoBehaviour // меняет мод создаваемой фигуры
     {
         RayShapeCreator creator;
 

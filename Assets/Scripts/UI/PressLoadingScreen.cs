@@ -1,10 +1,8 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace Intellectika
 {
-    public class PressLoadingScreen : MonoBehaviour
+    public class PressLoadingScreen : MonoBehaviour // убрать загрузачный экран с мейн сцены
     {
         public GameObject FirstCamera;
         public GameObject SecondCamera;

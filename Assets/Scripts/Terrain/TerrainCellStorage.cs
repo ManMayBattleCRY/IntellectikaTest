@@ -1,15 +1,10 @@
 using Intellectika.BootstrapSpace;
 using Intellectika.Interfaces;
-using Intellectika.Terrain;
-using System.Collections;
-using System.Collections.Generic;
-using System.Drawing;
 using UnityEngine;
-using Locator = Intellectika.BootstrapSpace.LocatorReference;
 
 namespace Intellectika.Terrain
 {
-    public class TerrainCellStorage : MonoBehaviour, ILocatable
+    public class TerrainCellStorage : MonoBehaviour, ILocatable // хранит в себе массив €чеек
     {
 
         TerrainCell[,] cells;

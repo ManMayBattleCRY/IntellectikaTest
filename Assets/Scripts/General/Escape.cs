@@ -4,18 +4,17 @@ using UnityEngine;
 
 namespace Intellectika
 {
-    public class ShapeSpawner : MonoBehaviour
+    public class Escape : MonoBehaviour
     {
-        // Start is called before the first frame update
-        void Start()
+        private void Awake()
         {
-        
+            DontDestroyOnLoad(this);
         }
 
         // Update is called once per frame
         void Update()
         {
-        
+            if (Input.GetKeyDown(KeyCode.Escape)) Application.Quit();
         }
     }
 }

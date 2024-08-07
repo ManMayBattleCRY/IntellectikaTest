@@ -6,7 +6,7 @@ using Intellectika.Interfaces;
 
 namespace Intellectika.BootstrapSpace
 {
-    public class LocatorReference : MonoBehaviour
+    public class LocatorReference : MonoBehaviour  // Локатор содержит ссылкы на важные объекты
     {
 
         public static LocatorReference Locator { get; private set; }

@@ -5,7 +5,7 @@ using Intellectika.BootstrapSpace;
 
 namespace Intellectika.Terrain
 {
-    public class CellTerrainGenerator : MonoBehaviour
+    public class CellTerrainGenerator : MonoBehaviour // генерирует землю как €чейки дл€ фигур
     {
         [SerializeField] Vector2Int Size = new Vector2Int(5,5);
         [SerializeField]TerrainCell[] cell;

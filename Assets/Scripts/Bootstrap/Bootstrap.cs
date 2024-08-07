@@ -1,11 +1,10 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-namespace Intellectika
+namespace Intellectika.BootstrapSpace
 {
-    public class Bootstrap : MonoBehaviour
+    public class Bootstrap : MonoBehaviour // Здесь должна была быть инициализация служб и загрузка мейн уровня
     {
 
         private IEnumerator Start()

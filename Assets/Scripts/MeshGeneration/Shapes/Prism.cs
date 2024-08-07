@@ -1,7 +1,3 @@
-using Palmmedia.ReportGenerator.Core.Parser.Filtering;
-using System.Collections;
-using System.Collections.Generic;
-using System.Drawing;
 using UnityEngine;
 
 namespace Intellectika
@@ -27,14 +23,14 @@ namespace Intellectika
             Height = data.GetHeght();
             base.Init();
 
-
+            // получение данных из интерфейса и инициализация
 
             CreateWrapper();
             CreateTop();
             CreateBottom();
             RecalculateSize(mFilters, 1, Height, 1);
             ChangePrismSize(mFilters, Radius);
-            RecalculatePosition(mFilters);
+            RecalculatePosition(mFilters); // меняет позицию с нулевых корденат на трансформ объекта
             ChangeColor(mRenderers, color);
             RecalculateNormals(mFilters);
 

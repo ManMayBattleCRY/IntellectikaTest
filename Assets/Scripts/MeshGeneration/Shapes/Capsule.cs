@@ -1,7 +1,3 @@
-using Palmmedia.ReportGenerator.Core.Parser.Filtering;
-using System.Collections;
-using System.Collections.Generic;
-using System.Drawing;
 using UnityEngine;
 
 namespace Intellectika
@@ -24,9 +20,8 @@ namespace Intellectika
             Resolution = data.GetResolution();
             Height = data.GetHeght();
             base.Init();
-            //mFilters = new MeshFilter[PlaneCount * 4];
-            //mRenderers = new MeshRenderer[PlaneCount * 4];
 
+            // получение данных из интерфейса и инициализация
 
 
 
@@ -35,9 +30,9 @@ namespace Intellectika
             CreateBottom();
             Normalize(mFilters, Radius);
 
-            Divide();
+            Divide(); // разделение и удлиненеие сферы для получения капсулы
 
-            RecalculatePosition(mFilters);
+            RecalculatePosition(mFilters); // меняет позицию с нулевых корденат на трансформ объекта
             ChangeColor(mRenderers, color);
             RecalculateNormals(mFilters);
 

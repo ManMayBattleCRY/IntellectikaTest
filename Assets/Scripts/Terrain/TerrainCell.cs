@@ -1,10 +1,8 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace Intellectika
 {
-    public class TerrainCell : MonoBehaviour
+    public class TerrainCell : MonoBehaviour // €чейка, хранит в себе ссылку на меш объект и может удалить его
     {
         [SerializeField] Color ActiveColor = Color.green;
         [SerializeField] Color NonActiveColor = Color.white;

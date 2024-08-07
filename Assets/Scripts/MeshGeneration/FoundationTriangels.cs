@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Intellectika
 {
-    internal class FoundationTriangels
+    internal class FoundationTriangels // создаёт меши для верха и низа фигуры
     {
         Mesh Mesh;
         int Quality;

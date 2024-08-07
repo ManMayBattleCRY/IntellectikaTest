@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace Intellectika
@@ -22,13 +20,13 @@ namespace Intellectika
 
             base.Init();
 
-
+            // получение данных из интерфейса и инициализация
 
             CreateWrapper();
             CreateTop();
             CreateBottom();
             Normalize(mFilters, Radius);
-            RecalculatePosition(mFilters);
+            RecalculatePosition(mFilters); // меняет позицию с нулевых корденат на трансформ объекта
             ChangeColor(mRenderers, color);
             RecalculateNormals(mFilters);
 

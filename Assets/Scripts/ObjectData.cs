@@ -1,11 +1,9 @@
 using Intellectika.Interfaces;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace Intellectika
 {
-    internal class ObjectData : MeshObjects,ILocatable
+    internal class ObjectData : MeshObjects,ILocatable // берёт информцию из интерфейса для создания мешобъектов
     {
         public Panels sphere;
         public Panels prism;

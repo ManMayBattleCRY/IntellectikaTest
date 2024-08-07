@@ -1,10 +1,8 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace Intellectika
 {
-    public class RayShapeCreator : MonoBehaviour
+    public class RayShapeCreator : MonoBehaviour // луч который подсвечивает ячейки. может открыть меню для создания/удаления
     {
         bool ActionMenuOpened = false;
         public bool EditorMenuOpened = false;

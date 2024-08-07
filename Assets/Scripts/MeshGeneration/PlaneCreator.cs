@@ -1,12 +1,8 @@
-using System.Collections;
-using System.Collections.Generic;
-using System.Net;
-using Unity.VisualScripting;
 using UnityEngine;
 
 namespace Intellectika
 {
-    internal class PlaneCreator
+    internal class PlaneCreator // класс для создания плоскостей
     {
         Mesh Mesh;
         int Quality;

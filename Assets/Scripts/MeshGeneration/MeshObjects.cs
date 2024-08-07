@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace Intellectika
 {
-    internal class MeshObjects : MonoBehaviour
+    internal class MeshObjects : MonoBehaviour // родитель для всех меш объектов и мешдаты, содержит нужные характеристики и методы помошники.
     {
         [SerializeField] private protected float Length = 4;
         [SerializeField] private protected float Width = 4;
@@ -47,7 +47,7 @@ namespace Intellectika
             }
         }
 
-        private protected void Normalize(MeshFilter[] _mFilters, float _Radius)
+        private protected void Normalize(MeshFilter[] _mFilters, float _Radius) // нормализует куб превращая его в сферу
         {
             for (int x = 0; x < _mFilters.Length; x++)
             {
@@ -69,7 +69,7 @@ namespace Intellectika
             }
         }
 
-        private protected void RecalculateSize(MeshFilter[] _mFilters, float SizeX, float SizeY, float SizeZ)
+        private protected void RecalculateSize(MeshFilter[] _mFilters, float SizeX, float SizeY, float SizeZ) // меняет размеры
         {
             for (int x = 0; x < _mFilters.Length; x++)
             {
@@ -84,21 +84,21 @@ namespace Intellectika
             }
         }
 
-        private protected void CalculatePoints()
+        private protected void CalculatePoints() // считает вершины с учётом того, что сторона квадрата это кос45 * радиус
         {
             Point0 = new Vector3(geometry.cos(45) * geometry.cos(CurrentAngleX - SingleAngle / 2), -.5f, geometry.cos(45) * geometry.sin(CurrentAngleX - SingleAngle / 2));
             Point1 = new Vector3(geometry.cos(45) * geometry.cos(CurrentAngleX + SingleAngle / 2), .5f, geometry.cos(45) * geometry.sin(CurrentAngleX + SingleAngle / 2));
             CurrentAngleX += SingleAngle;
         }
 
-        private protected void CalculatePointsSphere()
+        private protected void CalculatePointsSphere()// считает вершины для сферы
         {
             Point0 = new Vector3(geometry.cos(CurrentAngleX - SingleAngle / 2), -.5f, geometry.sin(CurrentAngleX - SingleAngle / 2));
             Point1 = new Vector3(geometry.cos(CurrentAngleX + SingleAngle / 2), .5f, geometry.sin(CurrentAngleX + SingleAngle / 2));
             CurrentAngleX += SingleAngle;
         }
 
-        private protected void RecalculatePosition(MeshFilter[] _mFilters)
+        private protected void RecalculatePosition(MeshFilter[] _mFilters) // меняет позицию с нулевых корденат на трансформ объекта
         {
             for (int x = 0; x < _mFilters.Length; x++)
             {

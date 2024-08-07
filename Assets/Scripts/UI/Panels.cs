@@ -1,12 +1,9 @@
-using System.Collections;
-using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
-using UnityEngine.UI;
 
 namespace Intellectika
 {
-    public class Panels : MonoBehaviour
+    public class Panels : MonoBehaviour // ссылки для обджектдаты
     {
         public TMP_Dropdown drop;
         public TMP_InputField Radius;
